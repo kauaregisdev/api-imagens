@@ -5,6 +5,6 @@ __pycache__/
 
 db.sqlite3
 
-/api-imagens/app-imagens/api/__pycache__/
-/api-imagens/app-imagens/api/migrations/__pycache__/
-/api-imagens/app-imagens/app-imagens/__pycache__/
+/api-imagens/app_imagens/api/__pycache__/
+/api-imagens/app_imagens/api/migrations/__pycache__/
+/api-imagens/app_imagens/app_imagens/__pycache__/
