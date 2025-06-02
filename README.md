@@ -1,0 +1,1 @@
+# API de imagens com Django REST Framework e MongoDB Atlas

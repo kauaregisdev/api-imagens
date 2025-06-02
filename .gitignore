@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+
+/venv
+
+/app-imagens/api/__pycache__/
+/app-imagens/api/migrations/__pycache__/
+/app-imagens/app-imagens/__pycache__/
