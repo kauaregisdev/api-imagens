@@ -7,5 +7,5 @@ router.register(r'images', ImageViewSet, basename='image')
 
 urlpatterns = [
     path('', include(router.urls)),
-    path('images/<int:pk>/download/', ImageDownloadView.as_view(), name='image-download')
+    path('images/<int:id>/download/', ImageDownloadView.as_view(), name='image-download')
 ]
