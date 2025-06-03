@@ -9,7 +9,9 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
-
+from dotenv import load_dotenv
+load_dotenv()
+import os
 from pathlib import Path
 from mongoengine import connect
 from datetime import timedelta
@@ -22,13 +24,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-n&&(ilz5ilwz07sdp+t*r5djj1tggq&-xs*@i_hofo*_2k)0&('
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
 
+MONGODB_URI = os.environ.get('MONGODB_URI')
+connect(host=MONGODB_URI)
 
 # Application definition
 
@@ -82,16 +86,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
-MONGODB_NAME = 'images_db'
-MONGODB_HOST = 'localhost'
-MONGODB_PORT = 27017
-
-connect(
-    db=MONGODB_NAME,
-    host=MONGODB_HOST,
-    port=MONGODB_PORT
-)
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
