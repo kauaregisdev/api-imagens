@@ -24,3 +24,8 @@ urlpatterns = [
     path('token/refresh', TokenRefreshView.as_view(), name='token_refresh'),
     path('api/', include('api.urls'))
 ]
+
+handler400 = 'api.handlers.bad_request'
+handler403 = 'api.handlers.forbidden'
+handler404 = 'api.handlers.not_found'
+handler500 = 'api.handlers.internal_error'

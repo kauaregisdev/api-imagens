@@ -1,10 +1,13 @@
+from django.http import FileResponse, Http404
 from rest_framework import viewsets, status
 from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
+from rest_framework.views import APIView
 from .models import Image
 from .serializers import ImageSerializer
 
+# ignorar erros de tipagem
 class ImageViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
     queryset = Image.objects.all()
@@ -46,3 +49,17 @@ class ImageViewSet(viewsets.ModelViewSet):
         image = self.get_object()
         image.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+class ImageDownloadView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, pk):
+        try:
+            image = Image.objects.get(id=pk)
+        except Image.DoesNotExist:
+            raise Http404('Image not found')
+        
+        if not image.image:
+            raise Http404('No file associated with this image')
+        
+        return FileResponse(image.image, as_attachment=True, filename=f'{image.title}.jpg')

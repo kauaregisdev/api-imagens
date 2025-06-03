@@ -1,5 +1,7 @@
+from django.urls import reverse
 from django.contrib.auth.models import User
 from rest_framework import serializers
+from .models import Image
 
 class UserSerializer(serializers.ModelSerializer):
     id = serializers.IntegerField(read_only=True)
@@ -14,6 +16,18 @@ class UserSerializer(serializers.ModelSerializer):
 class ImageSerializer(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
     title = serializers.CharField(max_length=60)
-    description = serializers.CharField(max_length=250, allow_blank=True)
+    description = serializers.CharField(max_length=250, required=False, allow_blank=True)
     image = serializers.FileField()
     created_at = serializers.DateTimeField(read_only=True)
+
+    def to_representation(self, instance):
+        data = super().to_representation(instance)
+        request = self.context.get('request')
+        if instance.image and request:
+            url = request.build_absolute_uri(
+                reverse('image-download', args=[str(instance.id)])
+            )
+            data['image'] = url
+        else:
+            data['image'] = None
+        return data
