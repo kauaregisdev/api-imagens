@@ -1,0 +1,17 @@
+@font-face {
+    font-family: 'Inter';
+    src: url('fonts/Inter_18pt-Regular.ttf') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body{
+    background-color: black;
+    font-family: 'Inter', Arial, sans-serif;
+}
+
+h1{
+    color: white;
+    text-align: center;
+    font-size: 2em;
+}
