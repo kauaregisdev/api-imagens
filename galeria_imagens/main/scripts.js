@@ -10,12 +10,12 @@ function criarElementoImagem(img) {
     image.style.maxWidth = '100%';
     li.appendChild(image);
 
-    const btn = document.createElement('button');
-    btn.textContent = 'Remover';
-    btn.className = 'remover-imagem';
-    btn.onclick = () => {
+    const btnRemover = document.createElement('button');
+    btnRemover.textContent = 'Remover';
+    btnRemover.className = 'remover-imagem';
+    btnRemover.onclick = () => {
         if (confirm('Deseja remover esta imagem?')) {
-            axios.delete(`http://localhost:8000/api/images/${img.id}/`, {
+            axios.delete(`${API_URL}${img.id}/`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -30,7 +30,37 @@ function criarElementoImagem(img) {
             })
         }
     };
-    li.appendChild(btn);
+
+    const btnEditar = document.createElement('button');
+    btnEditar.textContent = 'Editar';
+    btnEditar.className = 'editar-imagem';
+    btnEditar.onclick = () => {
+        const novoTitulo = prompt('Novo título:', img.title || '');
+        if (novoTitulo !== null && novoTitulo.trim() !== '') {
+            axios.put(`${API_URL}${img.id}/`, {
+                title: novoTitulo
+            }, {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+            .then(() => {
+                alert('Imagem editada com sucesso!');
+                carregarImagens();
+            })
+            .catch(err => {
+                alert('Erro ao editar imagem.');
+                console.error(err);
+            });
+        }
+    };
+
+    const div = document.createElement('div');
+    div.className = 'button-container';
+    div.appendChild(btnEditar);
+    div.appendChild(btnRemover);
+    li.appendChild(div);
+
     return li;
 }
 
