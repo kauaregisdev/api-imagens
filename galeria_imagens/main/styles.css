@@ -5,6 +5,24 @@ body {
     padding: 0;
 }
 
+.adicionar-imagem {
+    display: block;
+    margin: 24px auto;
+    padding: 12px 10px;
+    background: #3366cc;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.adicionar-imagem:hover {
+    background: #254a99;
+}
+
 h1 {
     text-align: center;
     margin: 32px 0 16px 0;

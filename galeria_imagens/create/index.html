@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enviar imagem</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Enviar nova imagem</h1>
+    <form id="form-upload" enctype="multipart/form-data">
+        <input type="file" name="image" id="image" required>
+        <input type="text" name="title" id="title" placeholder="Título da imagem:" required>
+        <input type="text" name="description" id="description" placeholder="Descrição da imagem (opcional):">
+        <button type="submit">Enviar imagem</button>
+    </form>
+    <button class="visualizar-imagens" id="visualizar-imagens" onclick="window.location.href='../main/index.html'">Visualizar imagens</button>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="scripts.js"></script>
+</body>
+</html>
