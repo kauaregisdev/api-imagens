@@ -12,16 +12,12 @@ h1 {
 }
 
 .galeria {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 24px;
-    justify-content: center;
     padding: 24px;
 }
 
 .galeria ul {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 24px;
     list-style: none;
     padding: 0;
@@ -33,7 +29,6 @@ h1 {
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.07);
     padding: 16px;
-    min-width: 220px;
     min-height: 120px;
     display: flex;
     align-items: center;
