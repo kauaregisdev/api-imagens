@@ -9,6 +9,28 @@ function criarElementoImagem(img) {
     image.alt = img.title || 'Imagem';
     image.style.maxWidth = '100%';
     li.appendChild(image);
+
+    const btn = document.createElement('button');
+    btn.textContent = 'Remover';
+    btn.className = 'remover-imagem';
+    btn.onclick = () => {
+        if (confirm('Deseja remover esta imagem?')) {
+            axios.delete(`http://localhost:8000/api/images/${img.id}/`, {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+            .then(() => {
+                alert('Imagem removida com sucesso!');
+                li.remove();
+            })
+            .catch(err => {
+                alert('Erro ao remover imagem.');
+                console.error(err);
+            })
+        }
+    };
+    li.appendChild(btn);
     return li;
 }
 

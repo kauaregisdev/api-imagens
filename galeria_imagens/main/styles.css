@@ -23,6 +23,21 @@ body {
     background: #254a99;
 }
 
+.remover-imagem {
+    background: #e74c3c;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 4px 10px;
+    cursor: pointer;
+    font-size: 0.95em;
+    transition: background 0.2s;
+}
+
+.remover-imagem:hover {
+    background: #c0392b;
+}
+
 h1 {
     text-align: center;
     margin: 32px 0 16px 0;
@@ -49,6 +64,13 @@ h1 {
     padding: 16px;
     min-height: 120px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.galeria li img {
+    margin-bottom: 12px;
+    max-width: 100%;
+    border-radius: 4px;
 }
