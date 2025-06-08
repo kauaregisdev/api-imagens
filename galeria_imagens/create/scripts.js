@@ -23,7 +23,7 @@ document.getElementById('form-upload').addEventListener('submit', (e) => {
     formData.append('title', form.title.value);
 
     if (form.description.value.trim() !== '') {
-        FormData.append('description', form.description.value);
+        formData.append('description', form.description.value);
     }
 
     axios.post(API_URL, formData, {
