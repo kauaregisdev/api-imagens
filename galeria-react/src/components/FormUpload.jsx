@@ -41,7 +41,7 @@ function FormUpload() {
     };
 
     return (
-        <form id="form-upload" enctype="multipart/form-data" onSubmit={handleSubmit}>
+        <form id="form-upload" encType="multipart/form-data" onSubmit={handleSubmit}>
             <input
                 type="file"
                 name="image"

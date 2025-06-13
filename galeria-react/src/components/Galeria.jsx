@@ -1,26 +1,26 @@
 import { useState, useEffect } from "react";
 import CardImagem from "./CardImagem";
-import axios from "axios";
-
-const API_URL = 'http://localhost:8000/api/images/';
-const TOKEN_URL = 'http://localhost:8000/token';
+import { getToken, api } from "../services/api";
 
 function Galeria() {
     const [imagens, setImagens] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        axios.post(TOKEN_URL, {
-            username: 'admin',
-            password: 'admin123'   
-        })
-        .then(res => {
-            const token = res.data.access;
-            return axios.get(API_URL, {
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            });
+        carregarImagens();   
+    }, []);
+
+    async function carregarImagens() {
+        setLoading(true);
+        let token = localStorage.getItem('token');
+        if (!token) {
+            token = await getToken('admin', 'admin123');
+            localStorage.setItem('token', token);
+        }
+        api.get('', {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
         })
         .then(res => {
             setImagens(res.data);
@@ -31,21 +31,44 @@ function Galeria() {
             setLoading(false);
             console.error(err);
         });
-    }, []);
+    }
+
+    async function deletarImagem(id) {
+        if (window.confirm("Deseja realmente excluir esta imagem?")) {
+            let token = localStorage.getItem('token');
+            if (!token) {
+                token = await getToken('admin', 'admin123');
+            }
+            api.delete(`${id}/`, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
+            .then(() => {
+                alert("Imagem excluída com sucesso!");
+                setImagens(imagens.filter(img => img.id !== id));
+            })
+            .catch(err => {
+                alert("Erro ao excluir imagem.");
+                console.error(err);
+            })
+        }
+    }
 
     if (loading) return <p id="loading">Carregando imagens...</p>;
 
     return (
         <>
             {imagens.map((img) => (
-                <CardImagem
-                    key={img.id}
-                    title={img.title}
-                    url={img.image}
-                    desc={img.description || "Sem descrição."}
-                />
-            ))}
+                <>
+                    <CardImagem
+                        key={img.id}
+                        image={img}
+                        onRemover={() => deletarImagem(img.id)}
+                    />
+                </>
+        ))}
         </>
-    )
+    );
 }
 export default Galeria;

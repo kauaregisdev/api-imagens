@@ -25,3 +25,30 @@ api.interceptors.request.use(
     },
     (err) => Promise.reject(err)
 );
+
+api.interceptors.response.use(
+    (response) => response,
+    async (error) => {
+        const originalRequest = error.config;
+        if (
+            error.response &&
+            error.response.status === 401 &&
+            !originalRequest._retry
+        ) {
+            originalRequest._retry = true;
+            try {
+                const res = await axios.post('http://localhost:8000/token', {
+                    username: 'admin',
+                    password: 'admin123'
+                });
+                localStorage.setItem('token', res.data.access);
+                originalRequest.headers.Authorization = `Bearer ${res.data.access}`;
+                return api(originalRequest);
+            } catch (refreshError) {
+                alert('Erro de autenticação.');
+                return Promise.reject(refreshError);
+            }
+        }
+        return Promise.reject(error);
+    }
+);
