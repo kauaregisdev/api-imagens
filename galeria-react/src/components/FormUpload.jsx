@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { getToken, api } from "../services/api";
 
-function FormUpload() {
+function FormUpload({ onUpload }) {
     const [image, setImage] = useState(null);
     const [title, setTitle] = useState('');
     const [desc, setDesc] = useState('');
@@ -29,6 +29,7 @@ function FormUpload() {
                     Authorization: `Bearer ${token}`
                 }
             });
+            if (onUpload) onUpload();
             alert('Imagem enviada com sucesso!');
             setImage(null);
             setTitle('');

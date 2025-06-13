@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import CardImagem from "./CardImagem";
+import FormUpload from "./FormUpload";
 import { getToken, api } from "../services/api";
 
 function Galeria() {
@@ -7,7 +8,7 @@ function Galeria() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        carregarImagens();   
+        carregarImagens();
     }, []);
 
     async function carregarImagens() {
@@ -59,15 +60,19 @@ function Galeria() {
 
     return (
         <>
-            {imagens.map((img) => (
-                <>
-                    <CardImagem
-                        key={img.id}
-                        image={img}
-                        onRemover={() => deletarImagem(img.id)}
-                    />
-                </>
-        ))}
+            <div id="galeria" className="galeria">
+                <h2>Lista de imagens</h2>
+                <ul id="imagens">
+                    {imagens.map((img) => (
+                        <CardImagem
+                            key={img.id}
+                            image={img}
+                            onRemover={() => deletarImagem(img.id)}
+                        />
+                    ))}
+                </ul>
+            </div>
+            <FormUpload onUpload={carregarImagens} />
         </>
     );
 }
