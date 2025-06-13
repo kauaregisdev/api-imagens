@@ -61,7 +61,7 @@ function Galeria() {
     return (
         <>
             <div id="galeria" className="galeria">
-                <h2>Lista de imagens</h2>
+                <h2>Imagens existentes</h2>
                 <ul id="imagens">
                     {imagens.map((img) => (
                         <CardImagem
@@ -71,8 +71,9 @@ function Galeria() {
                         />
                     ))}
                 </ul>
+                <h2>Enviar imagens</h2>
+                <FormUpload onUpload={carregarImagens} />
             </div>
-            <FormUpload onUpload={carregarImagens} />
         </>
     );
 }

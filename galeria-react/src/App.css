@@ -12,27 +12,7 @@ body {
     padding: 0;
 }
 
-.button-container {
-    display: flex;
-    gap: 12px;
-    flex-flow: wrap row;
-    justify-content: center;
-}
-
-.adicionar-imagem {
-    display: block;
-    margin: 24px auto;
-    padding: 12px 10px;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    font-weight: bold;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background 0.2s;
-}
-
-.editar-imagem, .remover-imagem {
+.remover-imagem {
     color: #fff;
     border: none;
     border-radius: 3px;
@@ -40,14 +20,6 @@ body {
     cursor: pointer;
     font-size: 0.95em;
     transition: background 0.2s;
-}
-
-.adicionar-imagem, .editar-imagem {
-    background: #3366cc;
-}
-
-.adicionar-imagem:hover, .editar-imagem:hover {
-    background: #254a99;
 }
 
 .remover-imagem {
