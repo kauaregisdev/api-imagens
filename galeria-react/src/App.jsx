@@ -1,9 +1,8 @@
 import Galeria from './components/Galeria';
-import FormImagem from './components/FormImagem';
+import FormUpload from './components/FormUpload';
 import './App.css';
 
 function App() {
-
   return (
     <>
       <header>
@@ -16,7 +15,7 @@ function App() {
             <Galeria />
           </ul>
         </div>
-        <FormImagem />
+        <FormUpload />
       </main>
     </>
   )

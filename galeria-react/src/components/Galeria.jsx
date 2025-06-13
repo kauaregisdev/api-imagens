@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import CardImagem from "./CardImagem";
 import axios from "axios";
 
 const API_URL = 'http://localhost:8000/api/images/';
@@ -37,11 +38,12 @@ function Galeria() {
     return (
         <>
             {imagens.map((img) => (
-                <li key={img.id}>
-                    <p>{img.title}</p>
-                    <img src={img.image} alt={img.title} />
-                    <p>{img.description}</p>
-                </li>
+                <CardImagem
+                    key={img.id}
+                    title={img.title}
+                    url={img.image}
+                    desc={img.description || "Sem descrição."}
+                />
             ))}
         </>
     )

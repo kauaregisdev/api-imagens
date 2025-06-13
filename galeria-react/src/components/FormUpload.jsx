@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { getToken, api } from "../services/api";
 
-function FormImagem() {
+function FormUpload() {
     const [image, setImage] = useState(null);
     const [title, setTitle] = useState('');
     const [desc, setDesc] = useState('');
@@ -70,4 +70,4 @@ function FormImagem() {
         </form>
     );
 }
-export default FormImagem;
+export default FormUpload;
