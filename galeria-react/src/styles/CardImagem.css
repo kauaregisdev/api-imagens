@@ -13,6 +13,7 @@
 .galeria li img {
     margin-bottom: 12px;
     max-width: 100%;
+    height: auto;
     border-radius: 4px;
 }
 
