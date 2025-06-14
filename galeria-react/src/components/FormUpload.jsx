@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { getToken, api } from "../services/api";
+import '../styles/FormUpload.css';
 
 function FormUpload({ onUpload }) {
     const [image, setImage] = useState(null);

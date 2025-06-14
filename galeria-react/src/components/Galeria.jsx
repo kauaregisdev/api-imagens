@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import CardImagem from "./CardImagem";
 import FormUpload from "./FormUpload";
 import { getToken, api } from "../services/api";
+import '../styles/Galeria.css';
 
 function Galeria() {
     const [imagens, setImagens] = useState([]);

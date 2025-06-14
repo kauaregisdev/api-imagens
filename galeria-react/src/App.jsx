@@ -1,5 +1,5 @@
 import Galeria from './components/Galeria';
-import './App.css';
+import './styles/App.css';
 
 function App() {
   return (

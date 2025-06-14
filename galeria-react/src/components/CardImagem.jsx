@@ -1,3 +1,5 @@
+import '../styles/CardImagem.css';
+
 function CardImagem({ image, onRemover }) {
     return (
         <>

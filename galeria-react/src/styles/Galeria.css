@@ -1,0 +1,17 @@
+#form-upload-title {
+    margin-top: 40px;
+}
+
+.galeria {
+    padding: 24px;
+    margin-bottom: 32px;
+}
+
+.galeria ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
