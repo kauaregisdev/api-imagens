@@ -1,1 +1,1 @@
-# API de imagens com Django REST Framework e MongoDB Atlas
+# Galeria de imagens com React e Django REST Framework
