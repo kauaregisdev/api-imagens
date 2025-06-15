@@ -9,11 +9,11 @@ export async function getToken(username, password) {
         password
     });
     return res.data.access;
-}
+} // função que retorna o token JWT
 
 export const api = axios.create({
     baseURL: API_URL
-});
+}); // endpoint base para as requisições
 
 api.interceptors.request.use(
     (config) => {
@@ -24,7 +24,7 @@ api.interceptors.request.use(
         return config;
     },
     (err) => Promise.reject(err)
-);
+); // obtém o token automaticamente
 
 api.interceptors.response.use(
     (response) => response,
@@ -51,4 +51,4 @@ api.interceptors.response.use(
         }
         return Promise.reject(error);
     }
-);
+); // garante que o token sempre será obtido

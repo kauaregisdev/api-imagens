@@ -1,3 +1,5 @@
+/* configurações globais do formulário */
+
 form {
     display: flex;
     flex-direction: column;
@@ -9,6 +11,8 @@ form {
     border-radius: 10px;
     box-shadow: 0 2px 12px rgba(0,0,0,0.08);
 }
+
+/* configurações individuais */
 
 form input {
     padding: 10px;
@@ -40,6 +44,8 @@ form input::placeholder {
 form input:focus::placeholder {
     font-size: 0.9rem;
 }
+
+/* responsividade */
 
 @media (max-width: 600px) {
     form {

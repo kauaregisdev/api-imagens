@@ -1,6 +1,10 @@
+/* configurando o h2 do formulário */
+
 #form-upload-title {
     margin-top: 40px;
 }
+
+/* div galeria */
 
 .galeria {
     padding: 24px;
@@ -15,6 +19,8 @@
     padding: 0;
     margin: 0;
 }
+
+/* responsividade */
 
 @media (max-width: 600px) {
     .galeria {

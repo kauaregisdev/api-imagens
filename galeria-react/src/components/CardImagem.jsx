@@ -1,3 +1,6 @@
+// esse componente recebe um JSON com as informações da imagem e retorna um item de lista contendo a imagem com título e, se houver, descrição
+// contém também um botão específico para cada imagem que deleta a imagem em questão
+
 import '../styles/CardImagem.css';
 
 function CardImagem({ image, onRemover }) {

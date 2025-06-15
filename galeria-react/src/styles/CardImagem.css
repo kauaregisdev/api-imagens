@@ -1,3 +1,5 @@
+/* configurando os cards */
+
 .galeria li {
     background: #fff;
     border-radius: 8px;
@@ -16,6 +18,8 @@
     height: auto;
     border-radius: 4px;
 }
+
+/* configurando o botão de remoção */
 
 .remover-imagem {
     color: #fff;

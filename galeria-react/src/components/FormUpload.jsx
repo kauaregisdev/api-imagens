@@ -1,3 +1,5 @@
+// esse componente é um formulário de envio de imagens, que recebe os inputs do usuário (título, URL da imagem e descrição) e envia para o banco de dados
+
 import { useState } from "react";
 import { getToken, api } from "../services/api";
 import '../styles/FormUpload.css';
