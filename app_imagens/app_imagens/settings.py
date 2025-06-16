@@ -29,12 +29,9 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'chave-insegura')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', False)
 
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '').split(',')
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '')
 
-CORS_ALLOWED_ORIGINS = [
-    'https://seu-front.vercel.app',
-    'http://localhost:5173'
-]
+CORS_ALLOWED_ORIGINS = os.environ.get('CORS_ALLOWED_ORIGINS', '')
 
 MONGODB_URI = os.environ.get('MONGODB_URI')
 connect(host=MONGODB_URI)
