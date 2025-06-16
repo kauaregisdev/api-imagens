@@ -1,0 +1,5 @@
+/* alteração simples no home */
+
+.home ul {
+    list-style: none;
+}

@@ -1,4 +1,10 @@
+import Home from "../components/Home";
+
 function PaginaHome() {
-    return <h1>Bem-vindo à galeria!</h1>;
+    return (
+        <div>
+            <Home />
+        </div>
+    );
 }
 export default PaginaHome;
