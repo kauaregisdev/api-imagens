@@ -1,6 +1,8 @@
 import { Outlet, Link } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 
 function Layout() {
+    const { isAuthenticated, logout } = useAuth();
     return (
         <>
         <header>
@@ -8,6 +10,7 @@ function Layout() {
                 <Link to='/'>Home</Link> |{' '}
                 <Link to='/galeria'>Galeria</Link> |{' '}
                 <Link to='/login'>Login</Link>
+                {isAuthenticated && <button className="logout" onClick={logout}>Logout</button>}
             </nav>
         </header>
         <main>

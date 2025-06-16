@@ -1,6 +1,6 @@
 /* configurações globais do formulário */
 
-#form-upload {
+#form-login {
     display: flex;
     flex-direction: column;
     gap: 18px;
@@ -14,14 +14,14 @@
 
 /* configurações individuais */
 
-#form-upload input {
+#form-login input {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
 }
 
-#form-upload button {
+#form-login button {
     padding: 12px 0;
     background: #3366cc;
     color: #fff;
@@ -33,22 +33,22 @@
     transition: background 0.2s;
 }
 
-#form-upload button:hover {
+#form-login button:hover {
     background: #254a99;
 }
 
-#form-upload input::placeholder {
+#form-login input::placeholder {
     transition: font-size 0.3s;
 }
 
-#form-upload input:focus::placeholder {
+#form-login input:focus::placeholder {
     font-size: 0.9rem;
 }
 
 /* responsividade */
 
 @media (max-width: 600px) {
-    #form-upload {
+    #form-login {
         max-width: 100%;
         padding: 8px;
     }

@@ -1,24 +1,29 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { AuthProvider } from './contexts/AuthContext';
+import PrivateRoute from './components/PrivateRoute';
 import Layout from './components/Layout';
-import Home from './pages/Home';
-import Login from './pages/Login';
+import PaginaHome from './pages/Home';
+import PaginaLogin from './pages/Login';
 import PaginaGaleria from './pages/Galeria';
-import NotFound from './pages/NotFound';
+import PaginaNotFound from './pages/NotFound';
 import './styles/App.css';
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path='login' element={<Login />} />
-          <Route path='galeria' element={<PaginaGaleria />} />
-          <Route path='*' element={<NotFound />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <AuthProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Layout />}>
+            <Route index element={<PaginaHome />} />
+            <Route path='login' element={<PaginaLogin />} />
+            <Route element={<PrivateRoute />}>
+              <Route path='galeria' element={<PaginaGaleria />} />
+            </Route>
+            <Route path='*' element={<PaginaNotFound />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
   )
 }
-
 export default App;

@@ -16,10 +16,11 @@ function Galeria() {
 
     async function carregarImagens() { // função que busca as imagens existentes no banco de dados
         setLoading(true); // ativa o loading message
-        let token = localStorage.getItem('token'); // obtendo o token
+        let token = localStorage.getItem('access'); // obtendo o token
         if (!token) {
-            token = await getToken('admin', 'admin123');
-            localStorage.setItem('token', token);
+            let data = await getToken('admin', 'admin123');
+            token = data.access;
+            localStorage.setItem('access', token);
         }
         api.get('', {
             headers: {
@@ -41,7 +42,8 @@ function Galeria() {
         if (window.confirm("Deseja realmente excluir esta imagem?")) {
             let token = localStorage.getItem('token'); // obtendo o token
             if (!token) {
-                token = await getToken('admin', 'admin123');
+                let data = await getToken('admin', 'admin123');
+                token = data.access;
             }
             api.delete(`${id}/`, {
                 headers: {

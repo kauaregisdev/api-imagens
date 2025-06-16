@@ -1,4 +1,10 @@
-function Login() {
-    return <h1>Página de login</h1>;
+import Login from "../components/Login";
+
+function PaginaLogin() {
+    return (
+        <div>
+            <Login />
+        </div>
+    )
 }
-export default Login;
+export default PaginaLogin;

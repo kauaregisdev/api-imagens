@@ -21,7 +21,11 @@
 
 /* configurando o botão de remoção */
 
-.remover-imagem {
+.logout {
+    margin-left: 10px;
+}
+
+.remover-imagem, .logout {
     color: #fff;
     border: none;
     border-radius: 3px;
@@ -31,10 +35,10 @@
     transition: background 0.2s;
 }
 
-.remover-imagem {
+.remover-imagem, .logout {
     background: #e74c3c;
 }
 
-.remover-imagem:hover {
+.remover-imagem:hover, .logout:hover {
     background: #c0392b;
 }

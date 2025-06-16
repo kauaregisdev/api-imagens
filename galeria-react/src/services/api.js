@@ -8,7 +8,7 @@ export async function getToken(username, password) {
         username,
         password
     });
-    return res.data.access;
+    return res.data;
 } // função que retorna o token JWT
 
 export const api = axios.create({
@@ -17,7 +17,7 @@ export const api = axios.create({
 
 api.interceptors.request.use(
     (config) => {
-        const token = localStorage.getItem('token');
+        const token = localStorage.getItem('access');
         if (token) {
             config.headers.Authorization = `Bearer ${token}`;
         }
@@ -41,7 +41,7 @@ api.interceptors.response.use(
                     username: 'admin',
                     password: 'admin123'
                 });
-                localStorage.setItem('token', res.data.access);
+                localStorage.setItem('access', res.data.access);
                 originalRequest.headers.Authorization = `Bearer ${res.data.access}`;
                 return api(originalRequest);
             } catch (refreshError) {

@@ -14,8 +14,9 @@ function FormUpload({ onUpload }) {
 
         let token = localStorage.getItem('token');
         if (!token) {
-            token = await getToken('admin', 'admin123');
-            localStorage.setItem('token', token);
+            let data = await getToken('admin', 'admin123');
+            token = data.access;
+            localStorage.setItem('access', token);
         }
 
         const formData = new FormData();
