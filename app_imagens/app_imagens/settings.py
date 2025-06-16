@@ -34,7 +34,10 @@ ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '')
 CORS_ALLOWED_ORIGINS = os.environ.get('CORS_ALLOWED_ORIGINS', '')
 
 MONGODB_URI = os.environ.get('MONGODB_URI')
-connect(host=MONGODB_URI)
+if MONGODB_URI:
+    connect(host=MONGODB_URI)
+else:
+    raise ValueError("MONGODB_URI not defined at .env")
 
 # Application definition
 
@@ -144,6 +147,7 @@ USE_TZ = True
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATIC_URL = '/static/'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
