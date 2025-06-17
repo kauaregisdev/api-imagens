@@ -27,7 +27,7 @@ function FormUpload({ onUpload }) {
         }
 
         try {
-            await api.post('', formData, {
+            await api.post('images/', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                     Authorization: `Bearer ${token}`

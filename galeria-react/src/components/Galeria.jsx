@@ -22,7 +22,7 @@ function Galeria() {
             token = data.access;
             localStorage.setItem('access', token);
         }
-        api.get('', {
+        api.get('images/', {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -45,7 +45,7 @@ function Galeria() {
                 let data = await getToken('admin', 'admin123');
                 token = data.access;
             }
-            api.delete(`${id}/`, {
+            api.delete(`images/${id}/`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
