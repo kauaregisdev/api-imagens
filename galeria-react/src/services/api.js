@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export async function getToken(username, password) {
-    const res = await axios.post(import.meta.env.VITE_TOKEN_URL, {
+    const res = await axios.post(import.meta.env.VITE_API_URL + '/api/token', {
         username,
         password
     });
