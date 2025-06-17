@@ -9,7 +9,7 @@ export async function getToken(username, password) {
 } // função que retorna o token JWT
 
 export const api = axios.create({
-    baseURL: import.meta.env.VITE_API_URL
+    baseURL: import.meta.env.VITE_API_URL + '/api/'
 }); // endpoint base para as requisições
 
 api.interceptors.request.use(
