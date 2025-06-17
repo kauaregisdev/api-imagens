@@ -1,10 +1,7 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8000/api/images/';
-const TOKEN_URL = 'http://localhost:8000/token';
-
 export async function getToken(username, password) {
-    const res = await axios.post(TOKEN_URL, {
+    const res = await axios.post(import.meta.env.VITE_TOKEN_URL, {
         username,
         password
     });
@@ -12,7 +9,7 @@ export async function getToken(username, password) {
 } // função que retorna o token JWT
 
 export const api = axios.create({
-    baseURL: API_URL
+    baseURL: import.meta.env.VITE_API_URL
 }); // endpoint base para as requisições
 
 api.interceptors.request.use(
